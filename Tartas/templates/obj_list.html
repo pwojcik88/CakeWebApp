@@ -1,0 +1,15 @@
+
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'cakelist.css' %}">
+    <ul id="obj_list" style="list-style-type: none">
+        <h1>List of Cakes</h1>
+        {% for obj in obj_list %}
+            <li><strong> {{ obj }} </strong>
+                <a href="{% url 'delete_cake' obj.pk%}"><button>DELETE</button></a>
+                <a href="{% url 'update_cake' obj.pk%}"><button>UPDATE</button></a>
+                <a href="{% url 'add_to_cart' obj.pk %}"><button>ADD TO CART</button> </a></li>
+            {% endfor %}
+    </ul>
+{% endblock %}

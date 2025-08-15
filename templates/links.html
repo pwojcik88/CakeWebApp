@@ -1,0 +1,27 @@
+<div id="links">
+    <a href="{% url 'home' %}"> Home</a>
+    <a href="{% url 'about' %}"> About</a>
+    <a href="{% url 'contact' %}"> Contact</a>
+    <a href="{% url 'product_list' %}"> Productos</a>
+</div>
+<div id="cart">
+        {% if user.is_authenticated %}
+        <a href="{% url 'view_cart' %}"> Checkout </a>
+        <a href="{% url 'cart_history' %}"> Pedidos </a>
+        {% endif %}
+</div>
+<div>
+    {% if user.is_superuser %}
+    <a href="{% url 'add_cake' %}">Add Cake</a>
+    <a href="{% url 'list_cake' %}">List of Cakes</a>
+    {% endif %}
+</div>
+<div id="account">
+    {% if user.is_authenticated %}Hola {{ user.username }} !
+    <a href="{% url 'profile' %}"> Mi perfil </a>
+    <a href="{% url 'logout' %}"> Cerrar sesión </a>
+    {% else %}
+    <a href="{% url 'register' %}"> Registrate </a>
+    <a href="{% url 'login' %}"> Iniciar sesión </a>
+    {% endif %}
+</div>

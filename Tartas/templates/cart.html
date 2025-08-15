@@ -1,0 +1,37 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+<link rel="stylesheet" href="{% static 'checkout.css' %}">
+</head>
+    <h1>Tu cesta de compra</h1>
+    <div class="product-list">
+    {% for cart_item in cart_items %}
+    <div class="product-item" enctype="multipart/form-data">
+        <img src="{{ cart_item.tarta.picture.url }}" alt="{{ cart_item.name }}" width="200" height="150">
+        <p><strong>{{ cart_item }}</strong></p>
+        <p>({{ cart_item.quantity }})</p>
+        <p><strong>Precio: €{{ cart_item.price }}</strong></p>
+        <a href="{% url 'remove_from_cart' cart_item.id %}">Borrar</a>
+    </div>
+    {% empty %}
+    <h2>Tu carrito está vacío.</h2>
+    {% endfor %}
+    </div>
+
+    <div id="precio_total">
+    <h2><strong>Precio total: €{{ total_price }}</strong></h2>
+    </div>
+    <div class="buttons">
+    <div class="button">
+        <a href="{% url 'place_order' %}">Paga Ahora</a>
+    </div>
+    <div class="button">
+    <a href="{% url 'product_list' %}"><strong>Seguir comprando</strong></a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'history.css' %}">
+<body>
+  <div class="container">
+    <h1>Tus pedidos</h1>
+    <p class="hint">Revisa los detalles de cada pedido</p>
+
+    {% if orders %}
+      {% for order in orders %}
+        <section class="order-card">
+          <header class="order-head">
+            <div>
+              <div class="order-id">Pedido #{{ order.id }}</div>
+              <div class="order-date">{{ order.ordered_date|date:"M d, Y · H:i" }}</div>
+            </div>
+            <div>
+              <span class="badge {% if order.is_paid %}paid{% else %}unpaid{% endif %}">
+                {% if order.is_paid %}Pagado{% else %}Esperando confirmación{% endif %}
+              </span>
+            </div>
+          </header>
+            <div class="total">Total: €{{ order.total|floatformat:2 }}</div>
+{#          {% with 0 as order_total %}#}
+            <table class="items">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th class="hide-sm">Price</th>
+                  <th class="qty">Qty</th>
+                  <th class="sub">Subtotal</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in order.orderitem_set.all %}
+                  {% if item.price %}
+                    {% with item.subtotal as line_total %}
+                      <tr>
+                        <td>{{ item.tarta.name }}</td>
+                        <td class="price hide-sm">€{{ item.price|floatformat:2 }}</td>
+                        <td class="qty">{{ item.quantity }}</td>
+                        <td class="sub">€{{ line_total|floatformat:2 }}</td>
+                      </tr>
+                    {% endwith %}
+                  {% else %}
+                    <tr>
+                      <td>{{ item.tarta.name }}</td>
+                      <td class="price hide-sm">—</td>
+                      <td class="qty">{{ item.quantity }}</td>
+                      <td class="sub">—</td>
+                    </tr>
+                  {% endif %}
+                {% empty %}
+                  <tr><td colspan="4" class="empty">No se encuentra ningún item</td></tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+            <footer class="order-foot">
+              <div></div><div class="total">Total: €{{ order.total|floatformat:2 }}</div>
+            </footer>
+{#          {% endwith %}#}
+        </section>
+      {% endfor %}
+    {% else %}
+      <div class="order-card empty">You have no past orders.</div>
+    {% endif %}
+  </div>
+</body>
+{% endblock %}

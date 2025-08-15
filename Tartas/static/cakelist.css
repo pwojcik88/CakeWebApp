@@ -1,0 +1,79 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url("baackground222.png");
+    margin: 0;
+    padding: 24px;
+    color: #ffffff;
+}
+
+/* Lista */
+#obj_list {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0;
+}
+
+/* Każdy element */
+#obj_list li {
+    background: #ffffff;
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform 0.2s ease;
+}
+
+#obj_list li:hover {
+    transform: translateY(-3px);
+}
+
+/* Tekst */
+#obj_list li strong {
+    font-size: 1.2rem;
+    color: #444;
+    flex-grow: 1;
+}
+
+/* Przyciski */
+#obj_list li a button {
+    border: none;
+    padding: 8px 14px;
+    margin-left: 8px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+/* DELETE */
+#obj_list li a button:nth-child(1),
+a[href*="delete_cake"] button {
+    background: #e74c3c;
+}
+a[href*="delete_cake"] button:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+}
+
+/* UPDATE */
+a[href*="update_cake"] button {
+    background: #f39c12;
+}
+a[href*="update_cake"] button:hover {
+    background: #d35400;
+    transform: scale(1.05);
+}
+
+/* ADD TO CART */
+a[href*="add_to_cart"] button {
+    background: #27ae60;
+}
+a[href*="add_to_cart"] button:hover {
+    background: #1e8449;
+    transform: scale(1.05);
+}

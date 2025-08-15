@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+    {% block content %}
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'profile.css' %}">
+        <form id='form' method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input id='submit_form' type="submit">
+        </form>
+{% endblock %}

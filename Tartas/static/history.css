@@ -1,0 +1,55 @@
+    :root {
+      --bg: #f4f6f8;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --shadow: 0 4px 12px rgba(0,0,0,0.08);
+      --ok-bg: #e8f7ee; --ok-fg:#1b5e20;
+      --no-bg: #fdecec; --no-fg:#b71c1c;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        margin:0;
+        padding:24px;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+        color: #ffffff;
+    }
+
+    .container { max-width: 960px; margin: 0 auto; }
+
+    .order-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+    }
+    .order-head, .order-foot {
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      margin-bottom: 12px;
+    }
+    .order-id { font-weight:600; }
+    .order-date { color: var(--muted); font-size: 14px; }
+
+    .badge {
+      font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; border:1px solid transparent;
+    }
+    .badge.paid { background: var(--ok-bg); color: var(--ok-fg); border-color:#c8edd6; }
+    .badge.unpaid { background: var(--no-bg); color: var(--no-fg); border-color:#f6d0d0; }
+
+    .items { width:100%; border-collapse: collapse; }
+    .items th, .items td { padding: 10px 8px; border-bottom: 1px solid var(--border); text-align:left; }
+    .items th { font-size: 13px; color: var(--muted); font-weight: 600; }
+    .items td.qty, .items td.price, .items td.sub { white-space:nowrap; text-align:right; }
+    .items tr:last-child td { border-bottom: none; }
+
+    .order-foot { margin-top: 10px; }
+    .total { font-weight: 700; font-size: 16px; }
+    .empty { text-align:center; color: var(--muted); padding: 32px 0; }
+    @media (max-width:640px){
+      .order-head, .order-foot { flex-direction: column; align-items:flex-start; }
+      .items th.hide-sm, .items td.hide-sm { display:none; }
+    }

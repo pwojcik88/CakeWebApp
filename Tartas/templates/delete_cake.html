@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+  <div>
+    <p>
+      ¿Segur@ que quieres borrar la tarta {{Tartas.name}}?
+    </p>
+    <form method="POST">
+      {% csrf_token %}
+      <input type="submit" name="operation" value="Si">
+      <input type="submit" name="operation" value="No">
+    </form>
+  </div>
+{% endblock %}

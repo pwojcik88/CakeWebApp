@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake Atelier</title>
+</head>
+<body>
+    <h1>Welcome to Cake Atelier</h1>
+    <nav class="navbar">
+        <ul>
+            <li>{%  include 'links.html' %}</li>
+        </ul>
+    </nav>
+     {% if messages %}
+          <div class="alert alert-dismissible" role="alert">
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        {% endif %}
+    {% block content %}
+<main>
+    <h1>Bienvenido a Cake Atelier</h1>
+    <p>
+        <h3>Bienvenidos a nuestro exquisito catálogo de tartas artesanales,
+        donde la tradición pastelera se encuentra con la innovación culinaria.
+        Descubra nuestra amplia selección de creaciones,
+        desde clásicos bizcochos hasta opciones veganas y sin gluten,
+        todas elaboradas con ingredientes de la más alta calidad para satisfacer los paladares más exigentes.</h3>
+    </p>
+</main>
+    {% endblock %}
+</body>
+</html>

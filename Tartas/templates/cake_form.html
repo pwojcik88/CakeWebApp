@@ -1,0 +1,10 @@
+<div>
+    <form method="POST">
+        {% csrf_token %}
+        <p><input type="text" name="name" value="{{ Tartas.name }}" placeholder="Cake Name"></p>
+        <p><input type="text" name="description" value='{{ Tartas.description }}' placeholder="Description"></p>
+        <p><input type="text" name="price" value='{{ Tartas.price }}' placeholder="Price"></p>
+        <p><input type="text" name="category" value='{{ Tartas.category }}' placeholder="Category"></p>
+        <p><input type="submit"></p>
+    </form>
+</div>
