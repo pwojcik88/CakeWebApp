@@ -14,7 +14,7 @@
         margin:0;
         padding:24px;
         font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
-        color: #ffffff;
+        color: #000000;
     }
 
     .container { max-width: 960px; margin: 0 auto; }

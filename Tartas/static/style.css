@@ -69,6 +69,7 @@ li a:focus{
     top: 0;
     right: 0;
     width: auto;
+    color: white;
 }
 #hello{
     text-align: right;

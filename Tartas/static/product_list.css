@@ -23,6 +23,7 @@
 .card-body h2 {
         margin: 0 0 8px;
         font-size: 1.2rem;
+        color: black;
     }
 .card-body p {
         margin: 0;
