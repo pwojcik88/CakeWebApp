@@ -6,14 +6,20 @@ body {
     color: #ffffff;
 }
 
-/* Lista */
+#search {
+    text-align: center;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
 #obj_list {
     max-width: 800px;
     margin: 40px auto;
     padding: 0;
 }
 
-/* Każdy element */
 #obj_list li {
     background: #ffffff;
     margin: 15px 0;
@@ -30,14 +36,12 @@ body {
     transform: translateY(-3px);
 }
 
-/* Tekst */
 #obj_list li strong {
     font-size: 1.2rem;
     color: #444;
     flex-grow: 1;
 }
 
-/* Przyciski */
 #obj_list li a button {
     border: none;
     padding: 8px 14px;
@@ -50,7 +54,6 @@ body {
     transition: background 0.2s ease, transform 0.1s ease;
 }
 
-/* DELETE */
 #obj_list li a button:nth-child(1),
 a[href*="delete_cake"] button {
     background: #e74c3c;
@@ -60,7 +63,6 @@ a[href*="delete_cake"] button:hover {
     transform: scale(1.05);
 }
 
-/* UPDATE */
 a[href*="update_cake"] button {
     background: #f39c12;
 }
@@ -69,7 +71,6 @@ a[href*="update_cake"] button:hover {
     transform: scale(1.05);
 }
 
-/* ADD TO CART */
 a[href*="add_to_cart"] button {
     background: #27ae60;
 }

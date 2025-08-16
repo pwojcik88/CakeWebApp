@@ -3,6 +3,12 @@
 {% block content %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'cakelist.css' %}">
+    <div>
+        <form id="search" method="GET">
+            {{ form.as_ul }}
+            <input type="submit">
+        </form>
+    </div>
     <ul id="obj_list" style="list-style-type: none">
         <h1>List of Cakes</h1>
         {% for obj in obj_list %}
