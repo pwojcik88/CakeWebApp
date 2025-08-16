@@ -25,14 +25,14 @@ class TestTartasModel:
         assert str(tarta) == "Tarta de Chocolate"
 
     def test_get_products_by_id(self):
-        t1 = Tartas.objects.create(name="Cake1", description="desc1", price=10)
-        t2 = Tartas.objects.create(name="Cake2", description="desc2", price=20)
+        t1 = Tartas.objects.create(name="Tarta1", description="aa", price=10)
+        t2 = Tartas.objects.create(name="Tarta2", description="bb", price=20)
         result = Tartas.get_products_by_id([t1.id])
         assert list(result) == [t1]
 
     def test_get_all_products(self):
-        Tartas.objects.create(name="Cake1", description="desc1", price=10)
-        Tartas.objects.create(name="Cake2", description="desc2", price=20)
+        Tartas.objects.create(name="Tarta1", description="aa", price=10)
+        Tartas.objects.create(name="Tarta2", description="bb", price=20)
         products = Tartas.get_all_products()
         assert products.count() == 2
 
@@ -50,17 +50,16 @@ class TestCakeAddView:
         assert "/login/" in response.url
 
     def test_forbidden_if_no_permission(self):
-        user = User.objects.create_user(username="alice", password="password")
-        self.client.login(username="alice", password="password")
+        user = User.objects.create_user(username="jorge", password="password")
+        self.client.login(username="jorge", password="password")
         response = self.client.get(self.url)
-        # Brak uprawnienia → 403
         assert response.status_code == 403
 
     def test_get_view_with_permission(self):
-        user = User.objects.create_user(username="bob", password="password")
-        perm = Permission.objects.get(codename="add_tartas")  # nazwa z permission_required
+        user = User.objects.create_user(username="andrea", password="password")
+        perm = Permission.objects.get(codename="add_tartas")
         user.user_permissions.add(perm)
-        self.client.login(username="bob", password="password")
+        self.client.login(username="andrea", password="password")
 
         response = self.client.get(self.url)
         assert response.status_code == 200
@@ -73,15 +72,13 @@ class TestCakeAddView:
         self.client.login(username="carol", password="password")
 
         data = {
-            "name": "New Cake",
-            "description": "Test cake",
+            "name": "Nueva Tarta",
+            "description": "Test",
             "price": "10.50",
         }
         response = self.client.post(self.url, data)
 
-        # powinno przekierować po zapisaniu
         assert response.status_code == 302
         assert response.url == self.url
 
-        # i obiekt powinien istnieć w DB
-        assert Tartas.objects.filter(name="New Cake").exists()
+        assert Tartas.objects.filter(name="Nueva Tarta").exists()
