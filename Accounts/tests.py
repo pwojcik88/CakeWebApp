@@ -90,14 +90,12 @@ def test_user(db):
         password='strongpassword123',
         email='old@example.com'
     )
-    # zakładam, że masz OneToOne do modelu Profile tworzony sygnałem post_save
     user.profile.bio = "Old bio"
     user.profile.save()
     return user
 
 @pytest.mark.django_db
 def test_profile_view_get(client, test_user):
-    """GET zwraca formularze edycji profilu i użytkownika"""
     client.login(username='testuser', password='strongpassword123')
     url = reverse('profile')
     response = client.get(url)
